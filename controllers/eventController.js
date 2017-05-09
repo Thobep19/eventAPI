@@ -1,6 +1,6 @@
 var eventController = (event) => {
 
-
+// C.R.U.D Functions
     return {
         findByIdInterceptor: (req, res, next) => {
             event.findById(req.params.id, (err, resp) => {

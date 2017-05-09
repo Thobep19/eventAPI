@@ -1,6 +1,6 @@
 var userController = (user) => {
 
-
+// C.R.U.D Functions
     return {
         findByIdInterceptor: (req, res, next) => {
             user.findById(req.params.id, (err, resp) => {
