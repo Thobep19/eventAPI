@@ -3,19 +3,25 @@ var mongoose = require('mongoose');
 
 // Event Model
 var eventModel = new mongoose.Schema ({
+    eventName:{type:String},
     eventDescription:{type: String},
     eventDate: {type: Date},
-    eventLocation: {type: String},
-    eventPrice: {type: Number},
+    eventLocation: {
+        eventStreet:{type: String},
+        eventCity:{type:String},
+        eventZip: {type:String}
+    },
+    eventPrice: {type: String},
     eventStart: { type: Boolean, default: true },
     Organization: {
         organizationName: {type: String},
-        organizationLocation:{type: String},
+        organizationAddress:{type: String},
+        organizationCity:{type: String},
+        organizationZip:{type: String},
         organizationDescription:{type: String},
         orgainizationType:{type: String}
     },
     Organizor: {
-        organizorName:{type: String},
         organizorFirstName:{type: String},
         organizorLastName:{type: String},
         organizorEmail:{type: String}
