@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var eventModel = new mongoose.Schema ({
     eventName:{type:String},
     eventDescription:{type: String},
-    eventDate: {type: Date},
+    eventDate: {type: String},
+    eventTime: {type: String},
     eventLocation: {
         eventStreet:{type: String},
         eventCity:{type:String},
@@ -24,6 +25,7 @@ var eventModel = new mongoose.Schema ({
     Organizor: {
         organizorFirstName:{type: String},
         organizorLastName:{type: String},
+        organizorPhone: {type: String},
         organizorEmail:{type: String}
     }
 });
