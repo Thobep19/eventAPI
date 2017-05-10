@@ -49,15 +49,20 @@ var eventController = (event) => {
                 }
             });
         },
-        update:
-        update = (req, res) => {
-            let newEvent = Object.assign(req.event, req.body);
-            console.log('newevent', newevent);
-            event.update(newevent, (err, resp) => {
+        update: (req, res) => {
+            console.log('from update ....', req.event);
+            event.update(req.body, (err, resp) => {
                 if (err) {
+                    console.log('err from update ', err);
                     res.status(500).send(err);
                 } else {
-                    res.json(newevent);
+                    console.log('resp from update ', resp);
+                    event.findOne({ _id: req.params.id }, (err, resp) => {
+                        if (!err) {
+                            res.json(req.event);
+                        }
+                    });
+
                 }
             });
         },

@@ -49,15 +49,20 @@ var userController = (user) => {
                 }
             });
         },
-        update:
-        update = (req, res) => {
-            let newUser = Object.assign(req.user, req.body);
-            console.log('newuser', newuser);
-            event.update(newuser, (err, resp) => {
+        update: (req, res) => {
+            console.log('from update ....', req.user);
+            User.update(req.body, (err, resp) => {
                 if (err) {
+                    console.log('err from update ', err);
                     res.status(500).send(err);
                 } else {
-                    res.json(newuser);
+                    console.log('resp from update ', resp);
+                    User.findOne({ _id: req.params.id }, (err, resp) => {
+                        if (!err) {
+                            res.json(req.user);
+                        }
+                    });
+
                 }
             });
         },
