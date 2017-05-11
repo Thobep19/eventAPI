@@ -49,6 +49,7 @@ var eventController = (event) => {
                 }
             });
         },
+        
         update: (req, res) => {
             console.log('from update ....', req.event);
             event.update(req.body, (err, resp) => {
