@@ -58,12 +58,11 @@ var eventController = (event) => {
                     res.status(500).send(err);
                 } else {
                     console.log('resp from update ', resp);
-                    event.findOne({ _id: req.params.id }, (err, resp) => {
-                        if (!err) {
+                    event.findOne({_id: req.params.id}, (err, resp) => {
+                         if (!err) {
                             res.json(req.event);
                         }
                     });
-
                 }
             });
         },
