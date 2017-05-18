@@ -1,6 +1,6 @@
 var eventController = (event) => {
 
-
+// C.R.U.D Functions
     return {
         findByIdInterceptor: (req, res, next) => {
             event.findById(req.params.id, (err, resp) => {
@@ -49,15 +49,20 @@ var eventController = (event) => {
                 }
             });
         },
-        update:
-        update = (req, res) => {
-            let newEvent = Object.assign(req.event, req.body);
-            console.log('newevent', newevent);
-            event.update(newevent, (err, resp) => {
+        
+        update: (req, res) => {
+            console.log('from update ....', req.event);
+            event.update(req.body, (err, resp) => {
                 if (err) {
+                    console.log('err from update ', err);
                     res.status(500).send(err);
                 } else {
-                    res.json(newevent);
+                    console.log('resp from update ', resp);
+                    event.findOne({_id: req.params.id}, (err, resp) => {
+                         if (!err) {
+                            res.json(req.event);
+                        }
+                    });
                 }
             });
         },
@@ -78,6 +83,7 @@ var eventController = (event) => {
                     res.status(500).send(err);
                 }
             });
+
         }
     }
 }
