@@ -51,13 +51,13 @@ var userController = (user) => {
         },
         update: (req, res) => {
             console.log('from update ....', req.user);
-            User.update(req.body, (err, resp) => {
+            user.update(req.body, (err, resp) => {
                 if (err) {
                     console.log('err from update ', err);
                     res.status(500).send(err);
                 } else {
                     console.log('resp from update ', resp);
-                    User.findOne({ _id: req.params.id }, (err, resp) => {
+                    user.findOne({ _id: req.params.id }, (err, resp) => {
                         if (!err) {
                             res.json(req.user);
                         }
